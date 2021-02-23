@@ -2138,11 +2138,9 @@ bool StructType::isDynamicallyEncoded() const
 {
 	if (recursive())
 		return true;
-	solAssert(interfaceType(false).get(), "");
 	for (auto t: memoryMemberTypes())
 	{
 		solAssert(t, "Parameter should have external type.");
-		t = t->interfaceType(false);
 		if (t->isDynamicallyEncoded())
 			return true;
 	}
